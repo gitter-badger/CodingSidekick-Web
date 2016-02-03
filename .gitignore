@@ -1,0 +1,10 @@
+node_modules
+bower_components
+public/libs/*
+npm-debug.log
+.idea
+typings
+public/css/*.css
+!public/css/style.css
+.c9
+.vscode

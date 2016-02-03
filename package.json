@@ -1,0 +1,33 @@
+{
+  "name": "codingsidekick-web",
+  "version": "1.0.0",
+  "description": "Website where people can find programming resources.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "postinstall": "bower cache clean && bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamrelos/CodingSidekick-Web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamrelos/CodingSidekick-Web/issues"
+  },
+  "homepage": "https://github.com/iamrelos/CodingSidekick-Web#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "bower": "^1.7.7",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.7",
+    "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.6.1",
+    "nodemon": "^1.8.1",
+    "uglify-js": "^2.6.1"
+  }
+}

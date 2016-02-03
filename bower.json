@@ -1,0 +1,28 @@
+{
+  "name": "workspace",
+  "description": "Website where people can find programming resources.",
+  "main": "server.js",
+  "authors": [
+    "Christian Soler <iamrelos@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/iamrelos/CodingSidekick-Web.git",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "angular-loading-bar": "~0.8.0",
+    "animate.css": "animate-css#~3.5.1",
+    "font-awesome": "~4.5.0",
+    "ngSmoothScroll": "~2.0.0"
+  }
+}
