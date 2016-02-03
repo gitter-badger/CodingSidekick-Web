@@ -17,3 +17,6 @@ Client-Side
 - AngularJs
 - TypeScript
 - LessCss
+
+Task Manager
+- Gulp
