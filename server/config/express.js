@@ -22,7 +22,8 @@ module.exports = function () {
     var api = express.Router();
     app.use('/api', api);
     
-    require('../routes/main')(app);
+    require('../routes/user-routes')(api);
+    require('../routes/node-routes')(app);
 
     // return instance of express
     return app;

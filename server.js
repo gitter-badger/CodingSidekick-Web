@@ -2,8 +2,23 @@ var mongoose = require('mongoose');
 var app = require('./server/config/express')();
 var config = require('./server/config/config');
 
-//mongoose.connect(config.database.url); => No Database String Available Yet
+/**
+ *  Run only when env === dev
+ */
+if (config.server.env === 'dev') {
+    app.use(require('morgan')('dev'));
+}
 
+/**
+ * Connect to mongolab
+ */
+mongoose.connect(config.database.url, function(err){
+    if (err) console.error(err);
+});
+
+/**
+ * Listen to PORT
+ */
 app.listen(config.server.port, function (err) {
     if (err) throw err;
 

@@ -10,7 +10,7 @@ var config = (function () {
      * Database Config Data
      */
     var databaseConfig = {
-        url: '' || ''
+        url: 'mongodb://admin:cskdbadmin@ds055495.mongolab.com:55495/csk-db' || ''
     }
     
     /**
@@ -18,7 +18,8 @@ var config = (function () {
      */
     var serverConfig = {
         port: process.env.PORT || 3000,
-        env: process.env.NODE_ENV || 'dev'
+        env: process.env.NODE_ENV || 'dev',
+        secret: process.env.SECRET || 'SIDEKICK'
     }
     
     /**
