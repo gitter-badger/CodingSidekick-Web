@@ -39,34 +39,32 @@ var userModel = (function () {
 
         return passwordHash.verify(password, self.password);
     };
-    
+
     /**
-     * Save user if does not exist
+     * Save user if it do not exist
      */
-    User.statics.signup = function (callback) {
+    User.methods.signup = function (callback) {
+        var _this = this;
+        var query = { $or: [{ username: _this.username }, { email: _this.email }] };
 
-        var query = { $or: [{ username: this.username }, { email: this.email }] };
+        mongoose.model('User').findOne(query, function (err, data) {
+            if (err)
+                return callback(err, null);
 
-        this.findOne(query, function (err, data) {
+            if (data)
+                return callback(null, { success: false, message: "Email or Username taken" });
 
-            if (err) callback(err, null);
+            _this.save(function (err) {
+                if (err)
+                    return callback(err, null);
 
-            if (data) callback({ message: "Email or Username taken" }, null);
-            
-            this.save(function (err) {
-                    // check for errors
-                    if (err) callback(err, null);
-
-                    // return success message
-                    return callback(null, { success: true, message: 'User Created' });
-                });
+                return callback(null, { success: true, message: 'User Created' });
+            });
         });
     };
 
-    // TODO: Create statics methods to handle mongodb calls. Like ( getUser(), userExist(), etc. ) 
-    
-    return mongoose.model('User', User);
+    return User;
 })();
 
 // export model
-module.exports = userModel;
+module.exports = mongoose.model('User', userModel);

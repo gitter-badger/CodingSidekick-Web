@@ -1,26 +1,28 @@
 // imported modules
-var UserModel = require('../models/user');
+var UserModel = require('../models/user-model');
 
 function userApis(api) {
     /**
      * User sign up endpoint 
      */
     api.post('/signup', function (req, res) {
-        
+        var data = req.body;
+
         var user = new UserModel({
-                username: req.body.username,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                middleName: req.body.middleName,
-                email: req.body.email,
-                password: req.body.password
-            });
-            
-        user.signup(function(err, data){
-            if (err) console.error(err);
-            
+            username: data.username,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            middleName: data.middleName,
+            email: data.email,
+            password: data.password
+        });
+
+        user.signup(function (err, data) {
+            if (err) return console.error(err);
+
             return res.status(200).send(data);
-        })
+        });
+
     });
 };
 
