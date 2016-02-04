@@ -18,7 +18,8 @@ function userApis(api) {
         });
 
         user.signup(function (err, data) {
-            if (err) return console.error(err);
+            if (err)
+                return res.status(200).send({ success: false, message: 'User validation failed', error: err });
 
             return res.status(200).send(data);
         });
