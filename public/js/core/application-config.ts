@@ -29,7 +29,7 @@
         $locationProvider.html5Mode(true);
 
         cfpLoadingBarProvider.includeSpinner = false;
-
+        
         $mdIconProvider.icon("menu", 'https://rawgit.com/angular/material-start/es5-tutorial/app/assets/svg/menu.svg', 24);
         $mdThemingProvider.theme('default').primaryPalette('grey', {
             'default': '100',

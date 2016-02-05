@@ -6,3 +6,11 @@ body {
   font-family: 'Open Sans', sans-serif;
   min-height: 100vh;
 }
+body [ng\:cloak],
+body [ng-cloak],
+body [data-ng-cloak],
+body [x-ng-cloak],
+body .ng-cloak,
+body .x-ng-cloak {
+  display: none !important;
+}
