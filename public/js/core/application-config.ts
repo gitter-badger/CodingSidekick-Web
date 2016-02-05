@@ -18,9 +18,9 @@
             controllerAs: 'vm'
         }).when('/signup', {
             templateUrl: '/partials/signup.html',
-            caseInsensitiveMatch: true
-            //controller: 'HomeController',
-            //controllerAs: 'vm'
+            caseInsensitiveMatch: true,
+            controller: 'SignupController',
+            controllerAs: 'vm'
         }).otherwise({
             redirectTo: '/'
         });
