@@ -1,18 +1,19 @@
 <div id="signup-wrapper">
-    <form name="form" ng-submit="vm.signup(vm.user)">
-        <input-text model="vm.user.username" name="username" type="text" placeholder="Username" required="true" min="5"></input-text>
-
-        <input ng-model="vm.user.username" name="username" class="form-control" type="text" placeholder="Username" ng-minlength="5"
-        required>
-        <input ng-model="vm.user.email" name="email" class="form-control" type="email" placeholder="Email" ng-minlength="8" required>
-        <input ng-model="vm.user.firstName" name="firstName" class="form-control" type="text" placeholder="First Name" ng-minlength="2"
-        required>
-        <input ng-model="vm.user.lastName" name="lastName" class="form-control" type="text" placeholder="Last Name" ng-minlength="2"
-        required>
-        <input ng-model="vm.user.password" name="password" class="form-control" type="password" placeholder="Password" ng-minlength="6"
-        required>
-        <input ng-model="vm.user.confirmPassword" name="confirmPassword" class="form-control" type="password" placeholder="Confirm Password"
-        ng-minlength="6" required>
-        <input class="btn btn-default" type="submit" value="sign up" ng-disabled="form.$invalid" />
-    </form>
+    <section class="container">
+        <form name="form" ng-submit="vm.signup(vm.user)">
+            <input ng-model="vm.user.username" name="username" class="form-control form-control-primary" type="text" placeholder="Username"
+            ng-minlength="5" required>
+            <input ng-model="vm.user.email" name="email" class="form-control form-control-primary" type="email" placeholder="Email" ng-minlength="8"
+            required>
+            <input ng-model="vm.user.firstName" name="firstName" class="form-control form-control-primary" type="text" placeholder="First Name"
+            ng-minlength="2" required>
+            <input ng-model="vm.user.lastName" name="lastName" class="form-control form-control-primary" type="text" placeholder="Last Name"
+            ng-minlength="2" required>
+            <input ng-model="vm.user.password" name="password" class="form-control form-control-primary" type="password" placeholder="Password"
+            ng-minlength="6" required>
+            <input ng-model="vm.user.confirmPassword" name="confirmPassword" class="form-control form-control-primary" type="password"
+            placeholder="Confirm Password" ng-minlength="6" required>
+            <input class="btn btn-default" type="submit" value="sign up" ng-disabled="form.$invalid" />
+        </form>
+    </section>
 </div>

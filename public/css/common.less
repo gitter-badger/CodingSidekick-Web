@@ -11,3 +11,19 @@
 //-------------------
 // INPUTS
 //-------------------
+
+.form-control.form-control-primary {
+    max-width: 240px;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid @color-light-grey;
+    margin-bottom: @spacing-level-2;
+    .border-radius(0);
+    .box-shadow(none);
+    
+    &:active, &:focus {
+        .box-shadow(none);
+        border-bottom-color: @color-light-black;
+    }
+}
