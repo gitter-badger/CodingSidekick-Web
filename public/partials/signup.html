@@ -1,5 +1,7 @@
 <div id="signup-wrapper">
     <form name="form" ng-submit="vm.signup(vm.user)">
+        <input-text model="vm.user.username" name="username" type="text" placeholder="Username" required="true" min="5"></input-text>
+
         <input ng-model="vm.user.username" name="username" class="form-control" type="text" placeholder="Username" ng-minlength="5"
         required>
         <input ng-model="vm.user.email" name="email" class="form-control" type="email" placeholder="Email" ng-minlength="8" required>
