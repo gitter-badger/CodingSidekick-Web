@@ -11,55 +11,31 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
     rel='stylesheet' type='text/css'>
-    <!--<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/angular-material/angular-material.css">
     <link rel="stylesheet" href="/libs/animate.css/animate.min.css" />
     <link rel="stylesheet" href="/libs/angular-loading-bar/build/loading-bar.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
 
 </head>
 
-<body layout="column" ng-cloak>
-
-    <md-toolbar layout="row" class="md-primary">
-        <md-button class="menu" hide-gt-sm ng-click="globalVM.toggleSidebar()">
-            <md-icon md-svg-icon="menu"></md-icon>
-        </md-button>
-        <h3>Coding Sidekick</h3>
-    </md-toolbar>
-
-    <section class="container" layout="row" flex>
-        <md-sidenav ng-click="globalVM.toggleSidebar()" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp">
-
-            <md-list>
-                <md-list-item>
-                    <a href="/">home</a>
-                </md-list-item>
-                <md-list-item>
-                    <a href="/signup">login/sign up</a>
-                </md-list-item>
-            </md-list>
-
-        </md-sidenav>
-
-        <md-content flex ng-view autoscroll></md-content>
-
-    </section>
+<body ng-cloak>
+    <navigation-bar></navigation-bar>
+    
+    <div ng-view autoscroll></div>
 
     <script src='/libs/jquery/dist/jquery.min.js'></script>
-    <!--<script src='/libs/bootstrap/dist/js/bootstrap.min.js'></script>-->
+    <script src='/libs/bootstrap/dist/js/bootstrap.min.js'></script>
     <script src='/libs/angular/angular.js'></script>
     <script src="/libs/angular-animate/angular-animate.js"></script>
-    <script src='/libs/angular-aria/angular-aria.js'></script>
-    <script src='/libs/angular-material/angular-material.js'></script>
     <script src='/libs/angular-route/angular-route.js'></script>
     <script src='/libs/angular-loading-bar/build/loading-bar.js'></script>
     <script src='/js/core/application.js'></script>
-    <!--<script src='/js/services/navigation-services.js'></script>-->
+    <script src='/js/services/navigation-services.js'></script>
     <script src='/js/services/data-services.js'></script>
     <script src='/js/core/application-config.js'></script>
     <script src='/js/core/application-run.js'></script>
+    <script src='/js/directives/navigation-bar/navigation-directive.js'></script>
     <script src='/js/controllers/global-controller.js'></script>
     <script src='/js/controllers/home-controller.js'></script>
     <script src='/js/controllers/signup-controller.js'></script>

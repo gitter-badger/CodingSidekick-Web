@@ -5,14 +5,10 @@ var app;
     (function (controllers) {
         'use strict';
         var GlobalController = (function () {
-            function GlobalController($mdSidenav) {
+            function GlobalController() {
                 var _this = this;
-                _this.$mdSidenav = $mdSidenav;
             }
-            GlobalController.prototype.toggleSidebar = function () {
-                this.$mdSidenav('left').toggle();
-            };
-            GlobalController.$inject = ['$mdSidenav'];
+            GlobalController.$inject = [];
             return GlobalController;
         })();
         angular.module('app.controllers')

@@ -1,40 +1,16 @@
 <div id="signup-wrapper">
-    <md-card>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Sign up</span>
-                <span class="md-subhead">Don't have an account?</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
-            <form name="form" ng-submit="vm.signup(vm.user)">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <input ng-model="vm.user.username" name="username" class="form-control" type="text" placeholder="Username" ng-minlength="5"
-                    required>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <input ng-model="vm.user.email" name="email" class="form-control" type="email" placeholder="Email" ng-minlength="8" required>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <input ng-model="vm.user.firstName" name="firstName" class="form-control" type="text" placeholder="First Name" ng-minlength="2"
-                    required>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <input ng-model="vm.user.lastName" name="lastName" class="form-control" type="text" placeholder="Last Name" ng-minlength="2"
-                    required>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <input ng-model="vm.user.password" name="password" class="form-control" type="password" placeholder="Password" ng-minlength="6"
-                    required>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <input ng-model="vm.user.confirmPassword" name="confirmPassword" class="form-control" type="password" placeholder="Confirm Password"
-                    ng-minlength="6" required>
-                </md-input-container>
-                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                    <md-button type="submit" ng-disabled="form.$invalid">Sign up</md-button>
-                </section>
-            </form>
-        </md-card-content>
-    </md-card>
+    <form name="form" ng-submit="vm.signup(vm.user)">
+        <input ng-model="vm.user.username" name="username" class="form-control" type="text" placeholder="Username" ng-minlength="5"
+        required>
+        <input ng-model="vm.user.email" name="email" class="form-control" type="email" placeholder="Email" ng-minlength="8" required>
+        <input ng-model="vm.user.firstName" name="firstName" class="form-control" type="text" placeholder="First Name" ng-minlength="2"
+        required>
+        <input ng-model="vm.user.lastName" name="lastName" class="form-control" type="text" placeholder="Last Name" ng-minlength="2"
+        required>
+        <input ng-model="vm.user.password" name="password" class="form-control" type="password" placeholder="Password" ng-minlength="6"
+        required>
+        <input ng-model="vm.user.confirmPassword" name="confirmPassword" class="form-control" type="password" placeholder="Confirm Password"
+        ng-minlength="6" required>
+        <input class="btn btn-default" type="submit" value="sign up" ng-disabled="form.$invalid" />
+    </form>
 </div>

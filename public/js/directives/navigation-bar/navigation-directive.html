@@ -1,0 +1,18 @@
+<header>
+    <nav class="navigation-bar">
+        <section class="navigation-bar-brand">
+            <a href="/">Coding Sidekick</a>
+            <i class="fa fa-2x fa-bars" ng-click="vm.toggleMenu()"></i>
+        </section>
+    </nav>
+
+    <aside class="navigation-sidebar-container" ng-class="vm.isSideBarOpen ? 'open' : ''">
+        <div class="content">
+            <span class="navigation-sidebar-brand">Navigation</span>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/signup">Sign up</a></li>
+            </ul>
+        </div>
+    </aside>
+</header>

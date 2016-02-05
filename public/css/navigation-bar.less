@@ -1,0 +1,125 @@
+@import 'variables.less';
+
+nav.navigation-bar {
+  background-color: @color-bg-navbar;
+  color: @color-font-base-navbar;
+  border-bottom: 2px solid @color-border-base-navbar;
+  min-height: @height-navbar;
+  position: fixed;
+  overflow: hidden;
+  padding: 0 @spacing-level-8;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  right: 0;
+  .box-sizing(border-box);
+
+  .navigation-bar-brand {
+    display: block;
+    text-align: center;
+
+    a {
+      line-height: @height-navbar;
+      color: @color-font-base-navbar;
+      font-size: @font-size-brand;
+      font-weight: @font-weight-light;
+      .transition(color 150ms linear);
+
+      &:hover {
+        color: @color-font-hover-navbar;
+        text-decoration: none;
+      }
+      
+      &:focus, &:active {
+        color: @color-font-base-navbar;
+        text-decoration: none;
+      }
+    }
+
+    i {
+      float: right;
+      line-height: @height-navbar;
+      .transition(all 500ms ease);
+
+      &:hover, &:focus {
+        color: @color-font-hover-navbar;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.navigation-sidebar-container {
+  .box-sizing(border-box);
+  padding-top: @height-navbar + @spacing-level-4;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: @color-bg-base-sidebar;
+  width: 0;
+  .box-shadow(none);
+  .transition(~"width 300ms ease 300ms, box-shadow 300ms ease");
+  
+  .content {
+    opacity: 0;
+    text-align: center;
+    .transition(opacity 300ms linear);
+    
+    .navigation-sidebar-brand {
+      font-size: @font-size-brand;
+      font-weight: @font-weight-light;
+      padding-bottom: 3px;
+      display: block;
+    }
+    
+    .divider-therefore {
+      font-size: @font-size-brand;
+    }
+    
+    ul {
+      padding: @spacing-level-1 0 0 0;
+      list-style: none;
+      
+      li {
+        padding-bottom: @spacing-level-2;
+        
+        a {
+          font-size: @font-size-menu-item;
+          
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navigation-sidebar-container.open {
+  width: 25%;
+  .box-shadow(-10px 0px 10px -10px @color-box-shadow);
+  .transition(~"width 300ms ease, box-shadow 300ms ease 300ms");
+  
+  .content {
+    opacity: 1;
+    .transition(opacity 300ms linear 300ms);
+  }
+}
+
+@media @media-x-small, @media-small {
+  .navigation-sidebar-container.open {
+    width: 100%;
+  }
+}
+
+@media @media-medium, @media-large {
+  .navigation-sidebar-container.open {
+    width: 55%;
+  }
+}

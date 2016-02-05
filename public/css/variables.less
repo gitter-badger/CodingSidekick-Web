@@ -5,8 +5,26 @@
 
 // font sizes
 @font-size-base: 19px;
+@font-size-brand: 2.2rem;
+@font-size-menu-item: 1.2rem;
+
+// font weight
+@font-weight-thin: 100;
+@font-weight-light: 200;
+@font-weight-regular: 300;
+@font-weight-semi-bold: 500;
+@font-weight-bold: 700;
 
 // colors
+@color-bg-navbar: #fff;
+@color-font-base-navbar: #333;
+@color-font-hover-navbar: #aaa;
+@color-border-base-navbar: #f1f1f1;
+@color-bg-base-sidebar: #fdfdfd;
+@color-box-shadow: #777;
+
+// height
+@height-navbar: 80px;
 
 // spacing
 @spacing-level-1: 5px; 
@@ -19,3 +37,14 @@
 @spacing-level-8: @spacing-level-1 * 8; 
 @spacing-level-9: @spacing-level-1 * 9; 
 @spacing-level-10: @spacing-level-1 * 10; 
+
+// breakpoints
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+~"only screen and (min-device-pixel-ratio: 1.5)";
+@media-x-small: ~"only screen and (max-width: 543px)";
+@media-small: ~"only screen and (min-width: 544px) and (max-width: 767px)";
+@media-medium: ~"only screen and (min-width: 768px) and (max-width: 991px)";
+@media-large: ~"only screen and (min-width: 992px) and (max-width: 1199px)";
+@media-x-large: ~"only screen and (min-width: 1200px)";
