@@ -14,7 +14,8 @@ Server-Side
 - MongooseJs
 
 Client-Side
-- AngularJs
+- AngularJS
+- AngularJS Material
 - TypeScript
 - LessCss
 
