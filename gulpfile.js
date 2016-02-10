@@ -14,15 +14,37 @@ gulp.task('styles', function () {
 });
 
 /**
+ * Create tsconfig.json task
+ */
+gulp.task('tsconfig', function () {
+    var tsConfig = glp.tsconfig(config.gulp.tsConfigJson);
+
+    return gulp.src([config.paths.client + "**/*.ts"])
+        .pipe(tsConfig())
+        .pipe(gulp.dest('.'));
+});
+
+/**
+ * Compile and Concat typescript file using tsconfig.json
+ */
+gulp.task('ts-compile', ['tsconfig'], function () {
+    var ts = glp.typescript;
+    var tsProject = ts.createProject('./tsconfig.json');
+    
+    return tsProject.src()
+        .pipe(ts(tsProject)).js
+        .pipe(gulp.dest(config.paths.root));
+});
+
+/**
  * Nodemon Task
  */
 gulp.task('nodemon', function () {
     glp.nodemon({
         script: 'server.js',
-        ext: 'js html less',
+        ext: 'js html less ts',
         delayTime: 3
-    })
-        .on('restart', ['styles']);
+    }).on('restart', ['styles']);
 });
 
 /**
@@ -35,4 +57,4 @@ gulp.task('watch', function () {
 /**
  * Run default tasks
  */
-gulp.task('default', ['nodemon', 'styles']);
+gulp.task('default', ['styles', 'ts-compile']);

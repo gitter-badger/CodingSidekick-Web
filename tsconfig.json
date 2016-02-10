@@ -1,11 +1,18 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
-    "declaration": false
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "sourceMap": true,
+        "outFile": "./public/js/app.js"
+    },
+    "files": ["public/js/core/application.ts",
+        "public/js/services/data-services.ts",
+        "public/js/services/navigation-services.ts",
+        "public/js/core/application-config.ts",
+        "public/js/core/application-run.ts",
+        "public/js/directives/navigation-bar/navigation-directive.ts",
+        "public/js/controllers/global-controller.ts",
+        "public/js/controllers/home-controller.ts",
+        "public/js/controllers/signup-controller.ts"
+    ]
 }

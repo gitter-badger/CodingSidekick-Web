@@ -1,101 +1,4 @@
 ///<reference path="../../../typings/tsd.d.ts" />
-var app;
-(function (app) {
-    var controllers;
-    (function (controllers) {
-        'use strict';
-        var GlobalController = (function () {
-            function GlobalController() {
-                var _this = this;
-            }
-            GlobalController.$inject = [];
-            return GlobalController;
-        })();
-        angular.module('app.controllers')
-            .controller('GlobalController', GlobalController);
-    })(controllers = app.controllers || (app.controllers = {}));
-})(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
-var app;
-(function (app) {
-    var controllers;
-    (function (controllers) {
-        'use strict';
-        var HomeController = (function () {
-            function HomeController() {
-            }
-            HomeController.$inject = [];
-            return HomeController;
-        })();
-        angular.module('app.controllers')
-            .controller('HomeController', HomeController);
-    })(controllers = app.controllers || (app.controllers = {}));
-})(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
-var app;
-(function (app) {
-    var controller;
-    (function (controller) {
-        'use strict';
-        var SignupController = (function () {
-            function SignupController(DataServices, $location) {
-                var _this = this;
-                _this.DataServices = DataServices;
-                _this.$location = $location;
-                _this.user = {};
-            }
-            SignupController.prototype.signup = function (user) {
-                var _this = this;
-                _this.DataServices.signup(user).then(function (res) {
-                    if (res.succes)
-                        _this.$location.path('/');
-                    else
-                        console.error('%s', res.message);
-                });
-            };
-            SignupController.$inject = ['DataServices', '$location'];
-            return SignupController;
-        })();
-        angular.module('app.controllers').controller('SignupController', SignupController);
-    })(controller = app.controller || (app.controller = {}));
-})(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
-(function (angular) {
-    'use strict';
-    angular.module('app').config(config);
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider'];
-    function config($routeProvider, $locationProvider, cfpLoadingBarProvider) {
-        $routeProvider.when('/', {
-            templateUrl: '/partials/home.html',
-            caseInsensitiveMatch: true,
-            controller: 'HomeController',
-            controllerAs: 'vm'
-        }).when('/signup', {
-            templateUrl: '/partials/signup.html',
-            caseInsensitiveMatch: true,
-            controller: 'SignupController',
-            controllerAs: 'vm'
-        }).otherwise({
-            redirectTo: '/'
-        });
-        $locationProvider.html5Mode(true);
-        cfpLoadingBarProvider.includeSpinner = false;
-    }
-})(angular);
-///<reference path="../../../typings/tsd.d.ts" />
-(function (angular) {
-    'use strict';
-    angular.module('app').run(run);
-    run.$inject = ['$rootScope', 'NavigationServices'];
-    function run($rootScope, NavigationServices) {
-        $rootScope.$on('$routeChangeStart', function (event, next, current) {
-            if (NavigationServices.getSideBarState()) {
-                NavigationServices.closeSideBar();
-            }
-        });
-    }
-})(angular);
-///<reference path="../../../typings/tsd.d.ts" />
 (function (angular) {
     'use strict';
     angular.module('app.services', []);
@@ -167,6 +70,42 @@ var app;
             .service('NavigationServices', NavigationServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+///<reference path="../../../typings/tsd.d.ts" />
+(function (angular) {
+    'use strict';
+    angular.module('app').config(config);
+    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider'];
+    function config($routeProvider, $locationProvider, cfpLoadingBarProvider) {
+        $routeProvider.when('/', {
+            templateUrl: '/partials/home.html',
+            caseInsensitiveMatch: true,
+            controller: 'HomeController',
+            controllerAs: 'vm'
+        }).when('/signup', {
+            templateUrl: '/partials/signup.html',
+            caseInsensitiveMatch: true,
+            controller: 'SignupController',
+            controllerAs: 'vm'
+        }).otherwise({
+            redirectTo: '/'
+        });
+        $locationProvider.html5Mode(true);
+        cfpLoadingBarProvider.includeSpinner = false;
+    }
+})(angular);
+///<reference path="../../../typings/tsd.d.ts" />
+(function (angular) {
+    'use strict';
+    angular.module('app').run(run);
+    run.$inject = ['$rootScope', 'NavigationServices'];
+    function run($rootScope, NavigationServices) {
+        $rootScope.$on('$routeChangeStart', function (event, next, current) {
+            if (NavigationServices.getSideBarState()) {
+                NavigationServices.closeSideBar();
+            }
+        });
+    }
+})(angular);
 ///<reference path="../../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
@@ -200,4 +139,65 @@ var app;
             };
         });
     })(directives = app.directives || (app.directives = {}));
+})(app || (app = {}));
+///<reference path="../../../typings/tsd.d.ts" />
+var app;
+(function (app) {
+    var controllers;
+    (function (controllers) {
+        'use strict';
+        var GlobalController = (function () {
+            function GlobalController() {
+                var _this = this;
+            }
+            GlobalController.$inject = [];
+            return GlobalController;
+        })();
+        angular.module('app.controllers')
+            .controller('GlobalController', GlobalController);
+    })(controllers = app.controllers || (app.controllers = {}));
+})(app || (app = {}));
+///<reference path="../../../typings/tsd.d.ts" />
+var app;
+(function (app) {
+    var controllers;
+    (function (controllers) {
+        'use strict';
+        var HomeController = (function () {
+            function HomeController() {
+            }
+            HomeController.$inject = [];
+            return HomeController;
+        })();
+        angular.module('app.controllers')
+            .controller('HomeController', HomeController);
+    })(controllers = app.controllers || (app.controllers = {}));
+})(app || (app = {}));
+///<reference path="../../../typings/tsd.d.ts" />
+var app;
+(function (app) {
+    var controller;
+    (function (controller) {
+        'use strict';
+        var SignupController = (function () {
+            function SignupController(DataServices, $location) {
+                var _this = this;
+                _this.DataServices = DataServices;
+                _this.$location = $location;
+                _this.user = {};
+            }
+            SignupController.prototype.signup = function (user) {
+                var _this = this;
+                _this.DataServices.signup(user).then(function (res) {
+                    if (res.succes)
+                        _this.$location.path('/');
+                    else
+                        console.error('%s', res.message);
+                });
+            };
+            SignupController.$inject = ['DataServices', '$location'];
+            return SignupController;
+        })();
+        angular.module('app.controllers').controller('SignupController', SignupController);
+    })(controller = app.controller || (app.controller = {}));
 })(app || (app = {}));

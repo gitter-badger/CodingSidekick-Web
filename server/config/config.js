@@ -9,49 +9,60 @@ var config = (function () {
     /**
      * Database Config Data
      */
-    var databaseConfig = {
+    _this.databaseConfig = {
         url: process.env.DB_URL ||'mongodb://dummy:dummy@ds061355.mongolab.com:61355/csk-db-dev'
     }
     
     /**
      * Server Environment Config Data
      */
-    var serverConfig = {
+    _this.serverConfig = {
         port: process.env.PORT || 3000,
         env: process.env.NODE_ENV || 'dev',
         secret: process.env.SECRET || 'SIDEKICK'
     }
     
     /**
-     * Gulp Config Data
-     */
-    var gulpConfig = {
-        lessSrc: _this.client + '/css/style.less',
-        lessDest: _this.client + '/css'
-    }
-    
-    /**
      * Paths
      */
-    var paths = {
+    _this.paths = {
+        root: '.',
         client: _this.client + '/',
         css: _this.client + '/css/',
         js: _this.client + '/js/'
     }
     
-    var tsConfigOptions = {
-        module: 'commonjs',
-        target: 'es5',
-        sourceMap: true,
-        outFile: 'output.js'
+    /**
+     * Gulp Config Data
+     */
+    _this.gulpConfig = {
+        lessSrc: _this.client + '/css/style.less',
+        lessDest: _this.client + '/css',
+        tsConfigJson: {
+            tsOrder: [
+                '**/application.ts',
+                '**/*-services.ts',
+                '**/application-*.ts',
+                '**/*-directive.ts',
+                '**/*-controller.ts'
+                
+            ],
+            tsConfig: { 
+                "compilerOptions": {
+                    module: 'commonjs',
+                    target: 'es5',
+                    sourceMap: true,
+                    outFile: _this.paths.js + 'app.js'
+                }
+            }
+        }
     }
-
+    
     return {
-        database: databaseConfig,
-        server: serverConfig,
-        gulp: gulpConfig,
-        tsConfigOptions: tsConfigOptions,
-        paths: paths
+        database: _this.databaseConfig,
+        server: _this.serverConfig,
+        gulp: _this.gulpConfig,
+        paths: _this.paths
     }
 })();
 

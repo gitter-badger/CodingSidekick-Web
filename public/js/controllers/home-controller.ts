@@ -4,7 +4,7 @@ module app.controllers {
     'use strict';
     
     class HomeController {
-
+        
         static $inject = [];
 
         constructor() {}
