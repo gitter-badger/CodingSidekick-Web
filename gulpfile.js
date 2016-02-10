@@ -21,7 +21,7 @@ gulp.task('tsconfig', function () {
 
     return gulp.src([config.paths.client + "**/*.ts"])
         .pipe(tsConfig())
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest(config.paths.root));
 });
 
 /**
@@ -34,6 +34,20 @@ gulp.task('ts-compile', ['tsconfig'], function () {
     return tsProject.src()
         .pipe(ts(tsProject)).js
         .pipe(gulp.dest(config.paths.root));
+});
+
+/**
+ * Minify js
+ */
+gulp.task('minify-js', ['ts-compile'], function() {
+  gulp.src(config.paths.js + 'app.js')
+    .pipe(glp.minify({
+        ext:{
+            min:'.min.js'
+        },
+        ignoreFiles: ['-min.js', '.min.js']
+    }))
+    .pipe(gulp.dest(config.paths.js));
 });
 
 /**
@@ -57,4 +71,4 @@ gulp.task('watch', function () {
 /**
  * Run default tasks
  */
-gulp.task('default', ['styles', 'ts-compile']);
+gulp.task('default', ['styles', 'minify-js']);
