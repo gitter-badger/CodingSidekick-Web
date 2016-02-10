@@ -32,3 +32,4 @@ Task Manager
 Docs
 ============
 - [Brainstorming Ideas](docs/brainstorm-ideas.md)
+- [Models](docs/models.md)
