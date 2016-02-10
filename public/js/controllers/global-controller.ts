@@ -5,7 +5,6 @@ module app.controllers {
     
     class GlobalController {
         
-        static $inject = [];
         constructor() {
             var _this = this;
         }

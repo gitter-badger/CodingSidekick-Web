@@ -1,6 +1,6 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 
-((angular): void => {
+((angular: any): void => {
     'use strict';
 
     angular.module('app').config(config);

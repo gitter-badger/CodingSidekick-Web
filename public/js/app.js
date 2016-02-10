@@ -1,4 +1,3 @@
-///<reference path="../../../typings/tsd.d.ts" />
 (function (angular) {
     'use strict';
     angular.module('app.services', []);
@@ -8,7 +7,6 @@
     var modules = ['app.services', 'app.controllers', 'app.filters', 'app.directives', 'ngRoute', 'angular-loading-bar'];
     angular.module('app', modules);
 })(angular);
-///<reference path="../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
     var services;
@@ -19,9 +17,6 @@ var app;
                 this.$q = $q;
                 this.$http = $http;
             }
-            /**
-             * Sign up user
-             */
             DataServices.prototype.signup = function (user) {
                 var _this = this;
                 var q = _this.$q.defer();
@@ -38,7 +33,6 @@ var app;
         angular.module('app.services').service('DataServices', DataServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
     var services;
@@ -70,7 +64,6 @@ var app;
             .service('NavigationServices', NavigationServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
 (function (angular) {
     'use strict';
     angular.module('app').config(config);
@@ -93,7 +86,6 @@ var app;
         cfpLoadingBarProvider.includeSpinner = false;
     }
 })(angular);
-///<reference path="../../../typings/tsd.d.ts" />
 (function (angular) {
     'use strict';
     angular.module('app').run(run);
@@ -106,7 +98,6 @@ var app;
         });
     }
 })(angular);
-///<reference path="../../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
     var directives;
@@ -140,7 +131,6 @@ var app;
         });
     })(directives = app.directives || (app.directives = {}));
 })(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
     var controllers;
@@ -150,14 +140,12 @@ var app;
             function GlobalController() {
                 var _this = this;
             }
-            GlobalController.$inject = [];
             return GlobalController;
         })();
         angular.module('app.controllers')
             .controller('GlobalController', GlobalController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
     var controllers;
@@ -166,14 +154,12 @@ var app;
         var HomeController = (function () {
             function HomeController() {
             }
-            HomeController.$inject = [];
             return HomeController;
         })();
         angular.module('app.controllers')
             .controller('HomeController', HomeController);
     })(controllers = app.controllers || (app.controllers = {}));
 })(app || (app = {}));
-///<reference path="../../../typings/tsd.d.ts" />
 var app;
 (function (app) {
     var controller;

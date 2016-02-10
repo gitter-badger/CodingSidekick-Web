@@ -10,7 +10,7 @@ var config = (function () {
      * Database Config Data
      */
     _this.databaseConfig = {
-        url: process.env.DB_URL ||'mongodb://dummy:dummy@ds061355.mongolab.com:61355/csk-db-dev'
+        url: process.env.DB_URL || 'mongodb://dummy:dummy@ds061355.mongolab.com:61355/csk-db-dev'
     }
     
     /**
@@ -45,19 +45,23 @@ var config = (function () {
                 '**/application-*.ts',
                 '**/*-directive.ts',
                 '**/*-controller.ts'
-                
             ],
-            tsConfig: { 
+            tsConfig: {
                 "compilerOptions": {
                     module: 'commonjs',
                     target: 'es5',
+                    removeComments: true,
+                    noImplicitAny: true,
                     sourceMap: true,
+                    noImplicitReturns: true,
+                    noFallthroughCasesInSwitch: true,
+                    allowUnreachableCode: false,
                     outFile: _this.paths.js + 'app.js'
                 }
             }
         }
     }
-    
+
     return {
         database: _this.databaseConfig,
         server: _this.serverConfig,

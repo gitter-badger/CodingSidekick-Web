@@ -5,8 +5,6 @@ module app.controllers {
     
     class HomeController {
         
-        static $inject = [];
-
         constructor() {}
     }
 

@@ -2,7 +2,7 @@
 
 import INavigationServices = app.services.INavigationServices;
 
-((angular): void => {
+((angular: any): void => {
     'use strict';
 
 
