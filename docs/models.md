@@ -1,4 +1,4 @@
-# Model Schemas -
+# Model Schemas
 
 **Legend**
 - !! = Not Implemented Yet
@@ -14,7 +14,7 @@
 - email: *String*
 - password: *String*
 - createdAt: *Date*
-- modified: *Date*
+- updatedAt: *Date*
 - isAnAdmin: *Boolean*
 - resourcesFlaggedCount: *Number*
 - !! favorites: *[Resource]*
@@ -22,6 +22,8 @@
 
 ### Category
 - name: *String*
+- createdAt: *Date*
+- updatedAt: *Date*
 
 ---
 
