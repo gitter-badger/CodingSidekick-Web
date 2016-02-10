@@ -31,8 +31,10 @@
     "gulp": "^3.9.0",
     "gulp-less": "^3.0.5",
     "gulp-load-plugins": "^1.2.0",
+    "jslint": "^0.9.6",
     "morgan": "^1.6.1",
     "nodemon": "^1.8.1",
+    "tslint": "^3.3.0",
     "uglify-js": "^2.6.1"
   }
 }

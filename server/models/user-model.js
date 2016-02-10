@@ -7,9 +7,9 @@ var userModel = (function () {
      * Model Schema
      */
     var User = new mongoose.Schema({
-        username: { type: String, required: true, index: { unigue: true }, min: 5 },
-        firstName: { type: String, required: true, index: { unigue: true }, min: 2 },
-        lastName: { type: String, required: true, index: { unigue: true }, min: 2 },
+        username: { type: String, required: true, index: { unigue: true }, min: 5, match: [/^[a-z0-9]+$/i, 'Username can only contain alphanumeric characters.']},
+        firstName: { type: String, required: true, min: 2, match: [/^[a-z]+$/i, 'First name can only contain letters.'] },
+        lastName: { type: String, required: true, min: 2, match: [/^[a-z]+$/i, 'Last name can only contain letters.'] },
         email: { type: String, required: true, index: { unigue: true }, min: 8, match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'] },
         password: { type: String, required: true, select: true, min: 6 },
         dateCreated: { type: Date, default: Date.now },
