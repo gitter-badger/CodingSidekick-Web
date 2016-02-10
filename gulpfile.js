@@ -1,27 +1,40 @@
+// imported modules
 var gulp = require('gulp');
 var config = require('./server/config/config');
 var glp = require('gulp-load-plugins')({ lazy: true });
-var nodemon = glp.nodemon;
 
+/**
+ * Less task
+ */
 gulp.task('styles', function () {
     return gulp
         .src(config.gulp.lessSrc)
         .pipe(glp.less())
-        .pipe(gulp.dest(config.gulp.lessDest))
-        .on('error', function () {
-            nodemon.emit('restart');
-        });
+        .on('error', function(err) {
+            console.log(err.message);
+            this.emit('end');
+        })
+        .pipe(gulp.dest(config.gulp.lessDest));
 });
 
+/**
+ * Nodemon Task
+ */
 gulp.task('nodemon', function () {
-    nodemon({
+    glp.nodemon({
         script: 'server.js',
         ext: 'js html'
     });
 });
 
+/**
+ * Gulp watch
+ */
 gulp.task('watch', function () {
     gulp.watch(config.paths.css + '*.less', ['styles']);
 });
 
-gulp.task('default', ['nodemon', 'watch']);
+/**
+ * Run default tasks
+ */
+gulp.task('default', ['nodemon', 'styles', 'watch']);
