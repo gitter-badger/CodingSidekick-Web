@@ -66,7 +66,11 @@
 - Email
 - Password
 - Created At
-- Modified At
+- Modified At,
+- Role
+- Flagged count (The count of user resources flagged. If max is reached, user account will be reviewed before deactiving it. MAX: 5)
+- Comments              <= Comment
+- Favorites             <= Resource
 - *More coming soon...*
 
 -------

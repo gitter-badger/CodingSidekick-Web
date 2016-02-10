@@ -5,13 +5,13 @@
 -   Students currently attending a coding bootcamp
 -   Aspiring developers going at it alone
 -   Junior Developers in general
--   JDev meetup members
 
 ---
 
 > Original idea by [Eric Carraway](https://github.com/ericcarraway) for Project [CoderCamps Trooper Backpack](https://github.com/iamrelos/CoderCamps-Trooper-Backpack.git)
 
 ---
+
 Technologies
 ============
 
