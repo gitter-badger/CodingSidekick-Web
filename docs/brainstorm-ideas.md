@@ -1,7 +1,9 @@
 # Brainstorming Ideas
 
-### Allow registered users to submit a resource.
+### Ideas
+- Allow registered users to submit a resource.
 - Any submission by a user needs to be approved.
+- Application/Client Keys for mobile app. (Something for the future) 
 
 ### UI for reading links
 - Coming soon...
