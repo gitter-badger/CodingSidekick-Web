@@ -27,17 +27,15 @@ var config = (function () {
      */
     _this.paths = {
         root: '.',
-        client: _this.client + '/',
-        css: _this.client + '/css/',
-        js: _this.client + '/js/'
+        client: _this.client,
+        css: _this.client + '/css',
+        js: _this.client + '/js'
     }
     
     /**
      * Gulp Config Data
      */
     _this.gulpConfig = {
-        lessSrc: _this.client + '/css/style.less',
-        lessDest: _this.client + '/css',
         tsConfigJson: {
             tsOrder: [
                 '**/application.ts',
@@ -56,9 +54,20 @@ var config = (function () {
                     noImplicitReturns: true,
                     noFallthroughCasesInSwitch: true,
                     allowUnreachableCode: false,
-                    outFile: _this.paths.js + 'app.js'
+                    outFile: _this.paths.js + '/app.js'
                 }
             }
+        },
+        minifyOpts: {
+            ext: {
+                min: '.min.js'
+            },
+            ignoreFiles: ['-min.js', '.min.js']
+        },
+        nodemonOpts: {
+            script: 'server.js',
+            ext: 'js html less ts',
+            delayTime: 3
         }
     }
 

@@ -8,9 +8,9 @@ var glp = require('gulp-load-plugins')({ lazy: true });
  */
 gulp.task('styles', function () {
     return gulp
-        .src(config.gulp.lessSrc)
+        .src(config.paths.css + '/style.less')
         .pipe(glp.less())
-        .pipe(gulp.dest(config.gulp.lessDest));
+        .pipe(gulp.dest(config.paths.css));
 });
 
 /**
@@ -19,56 +19,36 @@ gulp.task('styles', function () {
 gulp.task('tsconfig', function () {
     var tsConfig = glp.tsconfig(config.gulp.tsConfigJson);
 
-    return gulp.src([config.paths.client + "**/*.ts"])
+    return gulp.src([config.paths.client + "/**/*.ts"])
         .pipe(tsConfig())
         .pipe(gulp.dest(config.paths.root));
 });
 
 /**
- * Compile and Concat typescript file using tsconfig.json
+ * Compile, Concat & minify typescript files
  */
 gulp.task('ts-compile', ['tsconfig'], function () {
     var ts = glp.typescript;
-    var tsProject = ts.createProject('./tsconfig.json');
-    
+    var tsProject = ts.createProject(config.paths.root + '/tsconfig.json');
+    var minifyOpts = config.gulp.minifyOpts;
+
     return tsProject.src()
         .pipe(ts(tsProject)).js
+        .pipe(glp.minify(minifyOpts))
         .pipe(gulp.dest(config.paths.root));
-});
-
-/**
- * Minify js
- */
-gulp.task('minify-js', ['ts-compile'], function() {
-  gulp.src(config.paths.js + 'app.js')
-    .pipe(glp.minify({
-        ext:{
-            min:'.min.js'
-        },
-        ignoreFiles: ['-min.js', '.min.js']
-    }))
-    .pipe(gulp.dest(config.paths.js));
 });
 
 /**
  * Nodemon Task
  */
 gulp.task('nodemon', function () {
-    glp.nodemon({
-        script: 'server.js',
-        ext: 'js html less ts',
-        delayTime: 3
-    }).on('restart', ['styles']);
-});
+    var nodemonOpts = config.gulp.nodemonOpts;
 
-/**
- * Gulp watch
- */
-gulp.task('watch', function () {
-    gulp.watch(config.paths.css + '*.less', ['styles']);
+    glp.nodemon(nodemonOpts)
+        .on('restart', ['styles']);
 });
 
 /**
  * Run default tasks
  */
-gulp.task('default', ['styles', 'minify-js']);
+gulp.task('default', ['styles', 'ts-compile']);
