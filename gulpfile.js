@@ -4,11 +4,11 @@ var config = require('./server/config/config');
 var glp = require('gulp-load-plugins')({ lazy: true });
 
 /**
- * Less task
+ * Less compile task
  */
-gulp.task('styles', function () {
+gulp.task('less-compile', function () {
     return gulp
-        .src(config.paths.css + '/style.less')
+        .src(config.paths.css + '/**/style.less')
         .pipe(glp.less())
         .pipe(gulp.dest(config.paths.css));
 });
@@ -30,12 +30,30 @@ gulp.task('tsconfig', function () {
 gulp.task('ts-compile', ['tsconfig'], function () {
     var ts = glp.typescript;
     var tsProject = ts.createProject(config.paths.root + '/tsconfig.json');
-    var minifyOpts = config.gulp.minifyOpts;
 
     return tsProject.src()
         .pipe(ts(tsProject)).js
-        .pipe(glp.minify(minifyOpts))
         .pipe(gulp.dest(config.paths.root));
+});
+
+/**
+ * CSS minify task
+ */
+gulp.task('minify-css', ['less-compile'], function () {
+    return gulp.src(config.paths.css + '/style.css')
+        .pipe(glp.cssnano({convertValues: false}))
+        .pipe(gulp.dest(config.paths.css));
+});
+
+/**
+ * JS minify task
+ */
+gulp.task('minify-js', ['ts-compile'], function () {
+    var minifyOpts = config.gulp.minifyOpts;
+
+    gulp.src(config.paths.js + 'app.js')
+        .pipe(glp.minify(minifyOpts))
+        .pipe(gulp.dest(config.paths.js));
 });
 
 /**
@@ -45,10 +63,15 @@ gulp.task('nodemon', function () {
     var nodemonOpts = config.gulp.nodemonOpts;
 
     glp.nodemon(nodemonOpts)
-        .on('restart', ['styles']);
+        .on('restart', ['less-compile']);
 });
 
 /**
  * Run default tasks
  */
-gulp.task('default', ['styles', 'ts-compile']);
+gulp.task('default', ['less-compile', 'ts-compile']);
+
+/**
+ * Run task needed before deploying to production
+ */
+gulp.task('production', ['minify-css', 'minify-js']);
