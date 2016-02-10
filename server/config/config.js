@@ -10,7 +10,7 @@ var config = (function () {
      * Database Config Data
      */
     var databaseConfig = {
-        url: 'mongodb://admin:cskdbadmin@ds055495.mongolab.com:55495/csk-db' || ''
+        url: process.env.DB_URL ||'mongodb://dummy:dummy@ds061355.mongolab.com:61355/csk-db-dev'
     }
     
     /**
@@ -38,11 +38,19 @@ var config = (function () {
         css: _this.client + '/css/',
         js: _this.client + '/js/'
     }
+    
+    var tsConfigOptions = {
+        module: 'commonjs',
+        target: 'es5',
+        sourceMap: true,
+        outFile: 'output.js'
+    }
 
     return {
         database: databaseConfig,
         server: serverConfig,
         gulp: gulpConfig,
+        tsConfigOptions: tsConfigOptions,
         paths: paths
     }
 })();

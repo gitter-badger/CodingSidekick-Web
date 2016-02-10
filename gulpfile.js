@@ -10,10 +10,6 @@ gulp.task('styles', function () {
     return gulp
         .src(config.gulp.lessSrc)
         .pipe(glp.less())
-        .on('error', function(err) {
-            console.log(err.message);
-            this.emit('end');
-        })
         .pipe(gulp.dest(config.gulp.lessDest));
 });
 
@@ -23,8 +19,10 @@ gulp.task('styles', function () {
 gulp.task('nodemon', function () {
     glp.nodemon({
         script: 'server.js',
-        ext: 'js html'
-    });
+        ext: 'js html less',
+        delayTime: 3
+    })
+        .on('restart', ['styles']);
 });
 
 /**
@@ -37,4 +35,4 @@ gulp.task('watch', function () {
 /**
  * Run default tasks
  */
-gulp.task('default', ['nodemon', 'styles', 'watch']);
+gulp.task('default', ['nodemon', 'styles']);
