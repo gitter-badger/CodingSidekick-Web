@@ -6,7 +6,7 @@ var config = require('./server/config/config');
  *  Run only when env === dev
  */
 if (config.server.env === 'dev') {
-    app.use(require('morgan')('dev'));
+    // Dev
 }
 
 /**
