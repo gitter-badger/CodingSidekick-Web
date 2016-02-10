@@ -23,6 +23,7 @@ module.exports = function () {
     app.use('/api', api);
     
     require('../routes/user-routes')(api);
+    require('../routes/category-routes')(api);
     require('../routes/node-routes')(app);
 
     // return instance of express

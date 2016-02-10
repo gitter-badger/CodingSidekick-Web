@@ -1,6 +1,9 @@
 // imported modules
 var UserModel = require('../models/user-model');
 
+/**
+ * User REST Api's
+ */
 function userApis(api) {
     /**
      * User sign up endpoint 

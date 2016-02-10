@@ -12,7 +12,8 @@ var userModel = (function () {
         lastName: { type: String, required: true, min: 2, match: [/^[a-z]+$/i, 'Last name can only contain letters.'] },
         email: { type: String, required: true, index: { unigue: true }, min: 8, match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'] },
         password: { type: String, required: true, select: true, min: 6 },
-        dateCreated: { type: Date, default: Date.now },
+        createdAt: { type: Date, default: Date.now },
+        updatedAt: { type: Date, default: Date.now },
         isAnAdmin: { type: Boolean, default: false }
     });
 

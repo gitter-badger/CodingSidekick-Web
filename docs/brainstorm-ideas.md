@@ -7,12 +7,13 @@
 - Coming soon...
  
 ### Categories
-- All the languages
+- All the languages (Needs to be own entity)
 - Tutorials
-- Videos
 - Blogs
 - Podcasts
 - Hackathons
+- News
+- Discussion
 
 ### Misc.
 - Bootcamp info
