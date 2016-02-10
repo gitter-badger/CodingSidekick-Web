@@ -29,11 +29,21 @@ var config = (function () {
         lessSrc: _this.client + '/css/style.less',
         lessDest: _this.client + '/css'
     }
+    
+    /**
+     * Paths
+     */
+    var paths = {
+        client: _this.client + '/',
+        css: _this.client + '/css/',
+        js: _this.client + '/js/'
+    }
 
     return {
         database: databaseConfig,
         server: serverConfig,
         gulp: gulpConfig,
+        paths: paths
     }
 })();
 
