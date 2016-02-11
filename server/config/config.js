@@ -11,7 +11,7 @@ var config = (function () {
      */
     _this.databaseConfig = {
         url: process.env.DB_URL || 'mongodb://dummy:dummy@ds061355.mongolab.com:61355/csk-db-dev'
-    }
+    };
     
     /**
      * Server Environment Config Data
@@ -20,7 +20,7 @@ var config = (function () {
         port: process.env.PORT || 3000,
         env: process.env.NODE_ENV || 'dev',
         secret: process.env.SECRET || 'SIDEKICK'
-    }
+    };
     
     /**
      * Paths
@@ -30,7 +30,7 @@ var config = (function () {
         client: _this.client,
         css: _this.client + '/css',
         js: _this.client + '/js'
-    }
+    };
     
     /**
      * Gulp Config Data
@@ -71,9 +71,10 @@ var config = (function () {
         },
         cssnanoOpts: {
             convertValues: false,
-            discardComments: { removeAll: true }
+            discardComments: { removeAll: true },
+            autoprefixer: false
         }
-    }
+    };
 
     return {
         database: _this.databaseConfig,

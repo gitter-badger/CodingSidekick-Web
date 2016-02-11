@@ -70,9 +70,4 @@ gulp.task('nodemon', function () {
 /**
  * Run default tasks
  */
-gulp.task('default', ['less-compile', 'ts-compile']);
-
-/**
- * Run task needed before deploying to production
- */
-gulp.task('production', ['minify-css', 'minify-js']);
+gulp.task('default', ['minify-css', 'minify-js']);
