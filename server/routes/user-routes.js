@@ -22,13 +22,32 @@ function userApis(api) {
 
         user.signup(function (err, data) {
             if (err)
-                return res.status(200).send({ success: false, message: 'User validation failed', error: err });
+                return res.send(err);
 
-            return res.status(200).send(data);
+            return res.send(data);
         });
 
     });
-};
+
+    /**
+     * User login endpoint
+     */
+    api.post('/login', function(req, res) {
+        var data = req.body;
+
+        if (!data)
+            return res.send({ success: false, message: 'Login data empty' });
+
+        var user = new UserModel();
+        user.login(data, function (err, token) {
+
+            if (err)
+                return res.send({ success: false, message: 'Error while logging in' });
+
+            return res.send({ success: true, message: 'User logged in', token: token});
+        });
+    });
+}
 
 // export apis
 module.exports = userApis;
