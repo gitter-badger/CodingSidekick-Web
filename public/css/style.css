@@ -1,1 +1,150 @@
-.btn{text-transform:uppercase}.form-control.form-control-primary{max-width:240px;border-left:none;border-top:none;border-right:none;border-bottom:1px solid #aaa;margin-bottom:10px;border-radius:0;background-clip:padding-box;box-shadow:none}.form-control.form-control-primary:active,.form-control.form-control-primary:focus{box-shadow:none;border-bottom-color:#333}nav.navigation-bar{background-color:#fff;color:#333;border-bottom:2px solid #f1f1f1;min-height:80px;position:fixed;overflow:hidden;padding:0 40px;z-index:2;top:0;left:0;right:0;box-sizing:border-box}nav.navigation-bar .navigation-bar-brand{display:block;text-align:left}nav.navigation-bar .navigation-bar-brand a{line-height:80px;color:#333;font-size:1.7rem;font-weight:300;transition:color 150ms linear}nav.navigation-bar .navigation-bar-brand a:hover{color:#aaa;text-decoration:none}nav.navigation-bar .navigation-bar-brand a:active,nav.navigation-bar .navigation-bar-brand a:focus{color:#333;text-decoration:none}nav.navigation-bar .navigation-bar-brand i{float:right;line-height:80px;transition:all 500ms ease}nav.navigation-bar .navigation-bar-brand i:focus,nav.navigation-bar .navigation-bar-brand i:hover{color:#aaa}nav.navigation-bar .navigation-bar-brand i:hover{cursor:pointer}.navigation-sidebar-container{box-sizing:border-box;padding-top:100px;position:fixed;top:0;right:0;bottom:0;z-index:1;overflow:hidden;background-color:#fdfdfd;width:0;box-shadow:none;transition:width 300ms ease 300ms,box-shadow 300ms ease}.navigation-sidebar-container .content{opacity:0;text-align:center;transition:opacity 300ms linear}.navigation-sidebar-container .content .navigation-sidebar-brand{font-size:1.7rem;font-weight:200;padding-bottom:3px;display:block}.navigation-sidebar-container .content .divider-therefore{font-size:1.7rem}.navigation-sidebar-container .content ul{padding:5px 0 0;list-style:none}.navigation-sidebar-container .content ul li{padding-bottom:10px}.navigation-sidebar-container .content ul li a{font-size:1.2rem}.navigation-sidebar-container .content ul li a:hover{text-decoration:none}.navigation-sidebar-container.open{width:25%;box-shadow:-10px 0px 10px -10px #777;transition:width 300ms ease,box-shadow 300ms ease 300ms}.navigation-sidebar-container.open .content{opacity:1;transition:opacity 300ms linear 300ms}@media only screen and (max-width:543px),only screen and (min-width:544px) and (max-width:767px){.navigation-sidebar-container.open{width:100%}}@media only screen and (min-width:768px) and (max-width:991px),only screen and (min-width:992px) and (max-width:1199px){.navigation-sidebar-container.open{width:55%}}html{font-size:19px}body{background-color:#f1f1f1;font-family:Open Sans,sans-serif;min-height:100vh;padding-top:100px}body .ng-cloak,body .x-ng-cloak,body [data-ng-cloak],body [ng-cloak],body [ng\:cloak],body [x-ng-cloak]{display:none!important}
+.btn {
+  text-transform: uppercase;
+}
+.form-control.form-control-primary {
+  max-width: 240px;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 10px;
+  border-radius: 0;
+  background-clip: padding-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.form-control.form-control-primary:active,
+.form-control.form-control-primary:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom-color: #333;
+}
+nav.navigation-bar {
+  background-color: #fff;
+  color: #333;
+  border-bottom: 2px solid #f1f1f1;
+  min-height: 80px;
+  position: fixed;
+  overflow: hidden;
+  padding: 0 40px;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+nav.navigation-bar .navigation-bar-brand {
+  display: block;
+  text-align: left;
+}
+nav.navigation-bar .navigation-bar-brand a {
+  line-height: 80px;
+  color: #333;
+  font-size: 1.7rem;
+  font-weight: 300;
+  transition: color 150ms linear;
+}
+nav.navigation-bar .navigation-bar-brand a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+nav.navigation-bar .navigation-bar-brand a:focus,
+nav.navigation-bar .navigation-bar-brand a:active {
+  color: #333;
+  text-decoration: none;
+}
+nav.navigation-bar .navigation-bar-brand i {
+  float: right;
+  line-height: 80px;
+  transition: all 500ms ease;
+}
+nav.navigation-bar .navigation-bar-brand i:hover,
+nav.navigation-bar .navigation-bar-brand i:focus {
+  color: #aaa;
+}
+nav.navigation-bar .navigation-bar-brand i:hover {
+  cursor: pointer;
+}
+.navigation-sidebar-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 100px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #fdfdfd;
+  width: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: width 300ms ease 300ms, box-shadow 300ms ease;
+}
+.navigation-sidebar-container .content {
+  opacity: 0;
+  text-align: center;
+  transition: opacity 300ms linear;
+}
+.navigation-sidebar-container .content .navigation-sidebar-brand {
+  font-size: 1.7rem;
+  font-weight: 200;
+  padding-bottom: 3px;
+  display: block;
+}
+.navigation-sidebar-container .content .divider-therefore {
+  font-size: 1.7rem;
+}
+.navigation-sidebar-container .content ul {
+  padding: 5px 0 0 0;
+  list-style: none;
+}
+.navigation-sidebar-container .content ul li {
+  padding-bottom: 10px;
+}
+.navigation-sidebar-container .content ul li a {
+  font-size: 1.2rem;
+}
+.navigation-sidebar-container .content ul li a:hover {
+  text-decoration: none;
+}
+.navigation-sidebar-container.open {
+  width: 25%;
+  -webkit-box-shadow: -10px 0px 10px -10px #777;
+  box-shadow: -10px 0px 10px -10px #777;
+  transition: width 300ms ease, box-shadow 300ms ease 300ms;
+}
+.navigation-sidebar-container.open .content {
+  opacity: 1;
+  transition: opacity 300ms linear 300ms;
+}
+@media only screen and (max-width: 543px), only screen and (min-width: 544px) and (max-width: 767px) {
+  .navigation-sidebar-container.open {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 992px) and (max-width: 1199px) {
+  .navigation-sidebar-container.open {
+    width: 55%;
+  }
+}
+html {
+  font-size: 19px;
+}
+body {
+  background-color: #f1f1f1;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+body [ng\:cloak],
+body [ng-cloak],
+body [data-ng-cloak],
+body [x-ng-cloak],
+body .ng-cloak,
+body .x-ng-cloak {
+  display: none !important;
+}

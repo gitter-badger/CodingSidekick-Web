@@ -68,6 +68,10 @@ var config = (function () {
             script: 'server.js',
             ext: 'js html less ts',
             delayTime: 3
+        },
+        cssnanoOpts: {
+            convertValues: false,
+            discardComments: { removeAll: true }
         }
     }
 

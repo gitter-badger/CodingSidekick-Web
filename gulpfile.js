@@ -41,7 +41,8 @@ gulp.task('ts-compile', ['tsconfig'], function () {
  */
 gulp.task('minify-css', ['less-compile'], function () {
     return gulp.src(config.paths.css + '/style.css')
-        .pipe(glp.cssnano({convertValues: false}))
+        .pipe(glp.cssnano(config.gulp.cssnanoOpts))
+        .pipe(glp.rename('style.min.css'))
         .pipe(gulp.dest(config.paths.css + '/'));
 });
 
