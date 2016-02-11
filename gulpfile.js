@@ -8,9 +8,9 @@ var glp = require('gulp-load-plugins')({ lazy: true });
  */
 gulp.task('less-compile', function () {
     return gulp
-        .src(config.paths.css + '/**/style.less')
+        .src(config.paths.css + '/less/style.less')
         .pipe(glp.less())
-        .pipe(gulp.dest(config.paths.css));
+        .pipe(gulp.dest(config.paths.css + '/'));
 });
 
 /**
@@ -42,7 +42,7 @@ gulp.task('ts-compile', ['tsconfig'], function () {
 gulp.task('minify-css', ['less-compile'], function () {
     return gulp.src(config.paths.css + '/style.css')
         .pipe(glp.cssnano({convertValues: false}))
-        .pipe(gulp.dest(config.paths.css));
+        .pipe(gulp.dest(config.paths.css + '/'));
 });
 
 /**
@@ -51,9 +51,9 @@ gulp.task('minify-css', ['less-compile'], function () {
 gulp.task('minify-js', ['ts-compile'], function () {
     var minifyOpts = config.gulp.minifyOpts;
 
-    gulp.src(config.paths.js + 'app.js')
+    gulp.src(config.paths.js + '/app.js')
         .pipe(glp.minify(minifyOpts))
-        .pipe(gulp.dest(config.paths.js));
+        .pipe(gulp.dest(config.paths.js + '/'));
 });
 
 /**
