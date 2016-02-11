@@ -15,7 +15,6 @@
         ng-minlength="6" required>
         <input ng-model="vm.user.confirmPassword" name="confirmPassword" class="form-control form-control-primary" type="password"
         placeholder="Confirm Password" ng-minlength="6" required>
-        <input class="btn btn-default" type="submit" value="sign up" ng-disabled="form.$invalid" />
         <div class="modal-footer">
             <button class="btn btn-default" type="submit" ng-disabled="form.$invalid">Sign up</button>
             <button class="btn btn-default" type="button" ng-click="vm.closeModal()">Cancel</button>
