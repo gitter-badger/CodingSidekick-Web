@@ -12,6 +12,30 @@ var app;
     var services;
     (function (services) {
         'use strict';
+        var AuthInterceptor = (function () {
+            function AuthInterceptor($window) {
+                this.$window = $window;
+            }
+            AuthInterceptor.prototype.request = function (config) {
+                console.log('interceptor');
+                var _this = this;
+                config.headers = config.headers || {};
+                if (_this.$window.sessionStorage.getItem('csk-tk')) {
+                    config.headers['x-access-token'] = _this.$window.sessionStorage.getItem('csk-tk');
+                }
+                return config;
+            };
+            AuthInterceptor.$inject = ['$window'];
+            return AuthInterceptor;
+        })();
+        angular.module('app.services').factory('AuthInterceptor', function ($window) { return new AuthInterceptor($window); });
+    })(services = app.services || (app.services = {}));
+})(app || (app = {}));
+var app;
+(function (app) {
+    var services;
+    (function (services) {
+        'use strict';
         var DataServices = (function () {
             function DataServices($q, $http) {
                 this.$q = $q;
@@ -67,8 +91,8 @@ var app;
 (function (angular) {
     'use strict';
     angular.module('app').config(config);
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider'];
-    function config($routeProvider, $locationProvider, cfpLoadingBarProvider) {
+    config.$inject = ['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingBarProvider'];
+    function config($routeProvider, $httpProvider, $locationProvider, cfpLoadingBarProvider) {
         $routeProvider.when('/', {
             templateUrl: '/partials/home.html',
             caseInsensitiveMatch: true,
@@ -84,6 +108,7 @@ var app;
         });
         $locationProvider.html5Mode(true);
         cfpLoadingBarProvider.includeSpinner = false;
+        $httpProvider.interceptors.push('AuthInterceptor');
     }
 })(angular);
 (function (angular) {
@@ -175,7 +200,7 @@ var app;
             SignupController.prototype.signup = function (user) {
                 var _this = this;
                 _this.DataServices.signup(user).then(function (res) {
-                    if (res.succes)
+                    if (res.success)
                         _this.$location.path('/');
                     else
                         console.error('%s', res.message);

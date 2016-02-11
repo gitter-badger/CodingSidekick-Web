@@ -11,6 +11,7 @@
         "outFile": "./public/js/app.js"
     },
     "files": ["public/js/core/application.ts",
+        "public/js/services/auth-services.ts",
         "public/js/services/data-services.ts",
         "public/js/services/navigation-services.ts",
         "public/js/core/application-config.ts",

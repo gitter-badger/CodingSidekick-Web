@@ -5,11 +5,11 @@
 
     angular.module('app').config(config);
 
-    config.$inject = ['$routeProvider', '$locationProvider', 'cfpLoadingBarProvider'];
+    config.$inject = ['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingBarProvider'];
 
     function config(
-        $routeProvider: ng.route.IRouteProvider, $locationProvider: ng.ILocationProvider,
-        cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider): void {
+        $routeProvider: ng.route.IRouteProvider, $httpProvider: ng.IHttpProvider,
+        $locationProvider: ng.ILocationProvider, cfpLoadingBarProvider: ng.loadingBar.ILoadingBarProvider): void {
 
         $routeProvider.when('/', {
             templateUrl: '/partials/home.html',
@@ -28,5 +28,7 @@
         $locationProvider.html5Mode(true);
 
         cfpLoadingBarProvider.includeSpinner = false;
+
+        $httpProvider.interceptors.push('AuthInterceptor');
     }
 })(angular);

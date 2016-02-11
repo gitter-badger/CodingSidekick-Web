@@ -21,7 +21,7 @@ module app.controller {
         signup(user: any): void {
             var _this = this;
             _this.DataServices.signup(user).then(res => {
-                if (res.succes) 
+                if (res.success)
                     _this.$location.path('/');
                 else
                     console.error('%s', res.message);
