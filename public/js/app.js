@@ -53,32 +53,6 @@ var app;
 (function (app) {
     var services;
     (function (services) {
-        'use strict';
-        var DataServices = (function () {
-            function DataServices($q, $http) {
-                this.$q = $q;
-                this.$http = $http;
-            }
-            DataServices.prototype.signup = function (user) {
-                var _this = this;
-                var q = _this.$q.defer();
-                _this.$http.post('/api/signup', user).then(function (res) {
-                    q.resolve(res.data);
-                }).catch(function (err) {
-                    q.reject(err);
-                });
-                return q.promise;
-            };
-            DataServices.$inject = ['$q', '$http'];
-            return DataServices;
-        })();
-        angular.module('app.services').service('DataServices', DataServices);
-    })(services = app.services || (app.services = {}));
-})(app || (app = {}));
-var app;
-(function (app) {
-    var services;
-    (function (services) {
         var NavigationServices = (function () {
             function NavigationServices($rootScope) {
                 this.$rootScope = $rootScope;
@@ -104,6 +78,57 @@ var app;
         })();
         angular.module('app.services')
             .service('NavigationServices', NavigationServices);
+    })(services = app.services || (app.services = {}));
+})(app || (app = {}));
+var app;
+(function (app) {
+    var services;
+    (function (services) {
+        'use strict';
+        var UserServices = (function () {
+            function UserServices($q, $http, $window) {
+                this.$q = $q;
+                this.$http = $http;
+                this.$window = $window;
+            }
+            UserServices.prototype.signup = function (user) {
+                var _this = this;
+                var q = _this.$q.defer();
+                _this.$http.post('/api/signup', user).then(function (res) {
+                    q.resolve(res.data);
+                }).catch(function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
+            };
+            UserServices.prototype.login = function (user) {
+                var _this = this;
+                var q = _this.$q.defer();
+                _this.$http.post('/api/login', { email: user.email, password: user.password })
+                    .then(function (res) {
+                    _this.$window.sessionStorage.setItem('csk-tk', res.token);
+                    q.resolve();
+                });
+                return q.promise;
+            };
+            UserServices.prototype.getProfile = function () {
+                var _this = this;
+                var q = _this.$q.defer();
+                _this.$http.get('/api/me').then(function (res) {
+                    q.resolve(res.data);
+                });
+                return q.promise;
+            };
+            UserServices.prototype.isLoggedIn = function () {
+                return (this.$window.sessionStorage.getItem('csk-tk'));
+            };
+            UserServices.prototype.logout = function () {
+                this.$window.sessionStorage.removeItem('csk-tk');
+            };
+            UserServices.$inject = ['$q', '$http', '$window'];
+            return UserServices;
+        })();
+        angular.module('app.services').service('UserServices', UserServices);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 (function (angular) {
@@ -209,22 +234,22 @@ var app;
     (function (controller) {
         'use strict';
         var SignupController = (function () {
-            function SignupController(DataServices, $location) {
+            function SignupController(UserServices, $location) {
                 var _this = this;
-                _this.DataServices = DataServices;
+                _this.UserServices = UserServices;
                 _this.$location = $location;
                 _this.user = {};
             }
             SignupController.prototype.signup = function (user) {
                 var _this = this;
-                _this.DataServices.signup(user).then(function (res) {
+                _this.UserServices.signup(user).then(function (res) {
                     if (res.success)
                         _this.$location.path('/');
                     else
                         console.error('%s', res.message);
                 });
             };
-            SignupController.$inject = ['DataServices', '$location'];
+            SignupController.$inject = ['UserServices', '$location'];
             return SignupController;
         })();
         angular.module('app.controllers').controller('SignupController', SignupController);

@@ -3,24 +3,24 @@
 module app.controller {
     'use strict';
     
-    import IDataServices = app.services.IDataServices;
+    import IUserServices = app.services.IUserServices;
     
     class SignupController {
         user: any;
-        DataServices: IDataServices;
+        UserServices: IUserServices;
         $location: ng.ILocationService;
         
-        static $inject = ['DataServices', '$location'];
-        constructor(DataServices: IDataServices, $location: ng.ILocationService){
+        static $inject = ['UserServices', '$location'];
+        constructor(UserServices: IUserServices, $location: ng.ILocationService){
             var _this = this;
-            _this.DataServices = DataServices;
+            _this.UserServices = UserServices;
             _this.$location = $location;
             _this.user = {}; 
         }
         
         signup(user: any): void {
             var _this = this;
-            _this.DataServices.signup(user).then(res => {
+            _this.UserServices.signup(user).then(res => {
                 if (res.success)
                     _this.$location.path('/');
                 else
