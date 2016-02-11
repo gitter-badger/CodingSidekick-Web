@@ -8,7 +8,7 @@
     angular.module('app.filters', []);
     angular.module('app.directives', []);
 
-    let modules = ['app.services', 'app.controllers', 'app.filters', 'app.directives', 'ngRoute', 'angular-loading-bar'];
+    let modules = ['app.services', 'app.controllers', 'app.filters', 'app.directives', 'ngRoute', 'angular-loading-bar', 'ui.bootstrap'];
 
     angular.module('app', modules);
 })(angular); 

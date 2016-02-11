@@ -13,7 +13,6 @@
 //-------------------
 
 .form-control.form-control-primary {
-    max-width: 240px;
     border-left: none;
     border-top: none;
     border-right: none;
@@ -25,5 +24,43 @@
     &:active, &:focus {
         .box-shadow(none);
         border-bottom-color: @color-light-black;
+    }
+}
+
+//-------------------
+// CONTAINERS
+//-------------------
+
+.card-wrapper {
+    background: @color-bg-card;
+    .box-shadow(@box-shadow);
+    padding: @spacing-level-1;
+    
+    .card-header {
+        border-bottom: 0.4px solid @color-light-grey;
+        padding: @spacing-level-2 @spacing-level-2 @spacing-level-1 @spacing-level-2;
+        margin: 0 0 @spacing-level-2;
+        
+        span {
+            display: block;
+            
+            &:nth-child(1) {
+                color: @color-red;
+                font-size: @font-size-title;
+            }
+                
+            &:nth-child(2) {
+                color: @color-light-grey;
+                font-size: @font-size-subtitle;
+            }
+        }
+    }
+    
+    .card-body {
+        
+    }
+    
+    .card-footer {
+        
     }
 }

@@ -50,9 +50,9 @@ var userModel = (function () {
      * Check user password against user hashed password
      */
     User.methods.comparePassword = function (password) {
-        var self = this;
+        var _this = this;
 
-        return passwordHash.verify(password, self.password);
+        return passwordHash.verify(password, _this.password);
     };
 
     /**

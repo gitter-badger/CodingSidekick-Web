@@ -20,6 +20,6 @@
         "public/js/directives/navigation-bar/navigation-directive.ts",
         "public/js/controllers/global-controller.ts",
         "public/js/controllers/home-controller.ts",
-        "public/js/controllers/signup-controller.ts"
+        "public/js/controllers/register-controller.ts"
     ]
 }

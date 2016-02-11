@@ -6,11 +6,12 @@ module app.directives {
     import INavigationServices = app.services.INavigationServices;
 
     export class NavigationBarDirective {
+        user: any;
         isSideBarOpen: boolean;
 
-        static $inject = ['$scope', 'NavigationServices'];
+        static $inject = ['$scope', 'NavigationServices', '$uibModal', '$uibModalStack'];
 
-        constructor(private $scope: ng.IScope, private NavigationServices: INavigationServices){
+        constructor(private $scope: ng.IScope, private NavigationServices: INavigationServices, private $uibModal: any, private $uibModalStack: any) {
             var _this = this;
 
             _this.isSideBarOpen = _this.NavigationServices.getSideBarState();
@@ -22,6 +23,34 @@ module app.directives {
 
         toggleMenu(): void {
             this.NavigationServices.toggleSideBar();
+        }
+
+        openLoginModal(): void {
+            var _this = this;
+
+            _this.$uibModal.open({
+                templateUrl: '/partials/login-modal.html',
+                controller: NavigationBarDirective,
+                controllerAs: 'vm'
+            });
+
+            _this.NavigationServices.closeSideBar();
+        }
+
+        openRegisterModal(): void {
+            var _this = this;
+
+            _this.$uibModal.open({
+                templateUrl: '/partials/register-modal.html',
+                controller: NavigationBarDirective,
+                controllerAs: 'vm'
+            });
+
+            _this.NavigationServices.closeSideBar();
+        }
+
+        closeModal(): void {
+            this.$uibModalStack.dismissAll();
         }
     }
 

@@ -4,7 +4,7 @@
     angular.module('app.controllers', []);
     angular.module('app.filters', []);
     angular.module('app.directives', []);
-    var modules = ['app.services', 'app.controllers', 'app.filters', 'app.directives', 'ngRoute', 'angular-loading-bar'];
+    var modules = ['app.services', 'app.controllers', 'app.filters', 'app.directives', 'ngRoute', 'angular-loading-bar', 'ui.bootstrap'];
     angular.module('app', modules);
 })(angular);
 var __extends = (this && this.__extends) || function (d, b) {
@@ -114,8 +114,13 @@ var app;
             UserServices.prototype.getProfile = function () {
                 var _this = this;
                 var q = _this.$q.defer();
+                if (_this.profile) {
+                    q.resolve(_this.profile);
+                    return q.promise;
+                }
                 _this.$http.get('/api/me').then(function (res) {
-                    q.resolve(res.data);
+                    _this.profile = res.data;
+                    q.resolve(_this.profile);
                 });
                 return q.promise;
             };
@@ -140,11 +145,6 @@ var app;
             templateUrl: '/partials/home.html',
             caseInsensitiveMatch: true,
             controller: 'HomeController',
-            controllerAs: 'vm'
-        }).when('/signup', {
-            templateUrl: '/partials/signup.html',
-            caseInsensitiveMatch: true,
-            controller: 'SignupController',
             controllerAs: 'vm'
         }).otherwise({
             redirectTo: '/'
@@ -172,9 +172,11 @@ var app;
     (function (directives) {
         'use strict';
         var NavigationBarDirective = (function () {
-            function NavigationBarDirective($scope, NavigationServices) {
+            function NavigationBarDirective($scope, NavigationServices, $uibModal, $uibModalStack) {
                 this.$scope = $scope;
                 this.NavigationServices = NavigationServices;
+                this.$uibModal = $uibModal;
+                this.$uibModalStack = $uibModalStack;
                 var _this = this;
                 _this.isSideBarOpen = _this.NavigationServices.getSideBarState();
                 $scope.$on('navigation:sidebar', function (event, data) {
@@ -184,7 +186,28 @@ var app;
             NavigationBarDirective.prototype.toggleMenu = function () {
                 this.NavigationServices.toggleSideBar();
             };
-            NavigationBarDirective.$inject = ['$scope', 'NavigationServices'];
+            NavigationBarDirective.prototype.openLoginModal = function () {
+                var _this = this;
+                _this.$uibModal.open({
+                    templateUrl: '/partials/login-modal.html',
+                    controller: NavigationBarDirective,
+                    controllerAs: 'vm'
+                });
+                _this.NavigationServices.closeSideBar();
+            };
+            NavigationBarDirective.prototype.openRegisterModal = function () {
+                var _this = this;
+                _this.$uibModal.open({
+                    templateUrl: '/partials/register-modal.html',
+                    controller: NavigationBarDirective,
+                    controllerAs: 'vm'
+                });
+                _this.NavigationServices.closeSideBar();
+            };
+            NavigationBarDirective.prototype.closeModal = function () {
+                this.$uibModalStack.dismissAll();
+            };
+            NavigationBarDirective.$inject = ['$scope', 'NavigationServices', '$uibModal', '$uibModalStack'];
             return NavigationBarDirective;
         })();
         directives.NavigationBarDirective = NavigationBarDirective;
@@ -233,14 +256,15 @@ var app;
     var controller;
     (function (controller) {
         'use strict';
-        var SignupController = (function () {
-            function SignupController(UserServices, $location) {
+        var RegisterController = (function () {
+            function RegisterController(UserServices, $location) {
+                this.UserServices = UserServices;
+                this.$location = $location;
                 var _this = this;
-                _this.UserServices = UserServices;
-                _this.$location = $location;
-                _this.user = {};
+                _this.mode = $location.search().mode;
+                _this.showLogin = (_this.mode === 'login');
             }
-            SignupController.prototype.signup = function (user) {
+            RegisterController.prototype.signup = function (user) {
                 var _this = this;
                 _this.UserServices.signup(user).then(function (res) {
                     if (res.success)
@@ -249,9 +273,9 @@ var app;
                         console.error('%s', res.message);
                 });
             };
-            SignupController.$inject = ['UserServices', '$location'];
-            return SignupController;
+            RegisterController.$inject = ['UserServices', '$location'];
+            return RegisterController;
         })();
-        angular.module('app.controllers').controller('SignupController', SignupController);
+        angular.module('app.controllers').controller('RegisterController', RegisterController);
     })(controller = app.controller || (app.controller = {}));
 })(app || (app = {}));

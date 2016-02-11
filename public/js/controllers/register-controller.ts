@@ -5,17 +5,16 @@ module app.controller {
     
     import IUserServices = app.services.IUserServices;
     
-    class SignupController {
+    class RegisterController {
         user: any;
-        UserServices: IUserServices;
-        $location: ng.ILocationService;
+        mode: string;
+        showLogin: boolean;
         
         static $inject = ['UserServices', '$location'];
-        constructor(UserServices: IUserServices, $location: ng.ILocationService){
+        constructor(private UserServices: IUserServices, private $location: ng.ILocationService){
             var _this = this;
-            _this.UserServices = UserServices;
-            _this.$location = $location;
-            _this.user = {}; 
+            _this.mode = $location.search().mode;
+            _this.showLogin = (_this.mode === 'login');
         }
         
         signup(user: any): void {
@@ -29,5 +28,5 @@ module app.controller {
         }
     }
     
-    angular.module('app.controllers').controller('SignupController', SignupController);
+    angular.module('app.controllers').controller('RegisterController', RegisterController);
 }

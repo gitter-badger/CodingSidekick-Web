@@ -4,22 +4,29 @@ module app.services {
     'use strict';
 
     export interface IUserServices {
-        signup(user:any): ng.IPromise<any>;
-        login(user:any): ng.IPromise<any>;
+        signup(user: any): ng.IPromise<any>;
+        login(user: any): ng.IPromise<any>;
         getProfile(): ng.IPromise<any>;
-        isLoggedIn():Boolean;
-        logout():void;
+        isLoggedIn(): Boolean;
+        logout(): void;
     }
 
+    /**
+     * User services
+     */
     class UserServices implements IUserServices {
+        profile: any;
 
         static $inject = ['$q', '$http', '$window'];
 
-        constructor(private $q:ng.IQService, private $http:ng.IHttpService, private $window:ng.IWindowService) {
+        constructor(private $q: ng.IQService, private $http: ng.IHttpService, private $window: ng.IWindowService) {
 
         }
 
-        signup(user:any):ng.IPromise<any> {
+        /**
+         * Sign up user
+         */
+        signup(user: any): ng.IPromise<any> {
             var _this = this;
             var q = _this.$q.defer();
 
@@ -32,12 +39,15 @@ module app.services {
             return q.promise;
         }
 
-        login(user:any):ng.IPromise<any> {
+        /**
+         * Login user
+         */
+        login(user: any): ng.IPromise<any> {
             var _this = this;
             var q = _this.$q.defer();
 
-            _this.$http.post('/api/login', {email: user.email, password: user.password})
-                .then((res:any) => {
+            _this.$http.post('/api/login', { email: user.email, password: user.password })
+                .then((res: any) => {
                     _this.$window.sessionStorage.setItem('csk-tk', res.token);
                     q.resolve();
                 });
@@ -45,22 +55,37 @@ module app.services {
             return q.promise;
         }
 
-        getProfile():ng.IPromise<any> {
+        /**
+         * Get user profile
+         */
+        getProfile(): ng.IPromise<any> {
             var _this = this;
             var q = _this.$q.defer();
 
-            _this.$http.get('/api/me').then((res:any) => {
-                q.resolve(res.data);
+            if (_this.profile) {
+                q.resolve(_this.profile);
+                return q.promise;
+            }
+
+            _this.$http.get('/api/me').then((res: any) => {
+                _this.profile = res.data;
+                q.resolve(_this.profile);
             });
 
             return q.promise;
         }
 
-        isLoggedIn():Boolean {
+        /**
+         * Check if user is logged in
+         */
+        isLoggedIn(): Boolean {
             return (this.$window.sessionStorage.getItem('csk-tk'));
         }
 
-        logout():void {
+        /**
+         * Logout user
+         */
+        logout(): void {
             this.$window.sessionStorage.removeItem('csk-tk');
         }
 
