@@ -52,6 +52,7 @@ var config = (function () {
                     noImplicitAny: true,
                     sourceMap: true,
                     noImplicitReturns: true,
+                    suppressImplicitAnyIndexErrors: true,
                     noFallthroughCasesInSwitch: true,
                     allowUnreachableCode: false,
                     outFile: _this.paths.js + '/app.js'

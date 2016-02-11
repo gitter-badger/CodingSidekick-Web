@@ -7,17 +7,35 @@
     var modules = ['app.services', 'app.controllers', 'app.filters', 'app.directives', 'ngRoute', 'angular-loading-bar'];
     angular.module('app', modules);
 })(angular);
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var app;
 (function (app) {
     var services;
     (function (services) {
         'use strict';
-        var AuthInterceptor = (function () {
+        var HttpInterceptor = (function () {
+            function HttpInterceptor() {
+                var _this = this;
+                ['request', 'requestError', 'response', 'responseError']
+                    .forEach(function (method) {
+                    if (_this[method]) {
+                        _this[method] = _this[method].bind(_this);
+                    }
+                });
+            }
+            return HttpInterceptor;
+        })();
+        var AuthInterceptor = (function (_super) {
+            __extends(AuthInterceptor, _super);
             function AuthInterceptor($window) {
+                _super.call(this);
                 this.$window = $window;
             }
             AuthInterceptor.prototype.request = function (config) {
-                console.log('interceptor');
                 var _this = this;
                 config.headers = config.headers || {};
                 if (_this.$window.sessionStorage.getItem('csk-tk')) {
@@ -27,8 +45,8 @@ var app;
             };
             AuthInterceptor.$inject = ['$window'];
             return AuthInterceptor;
-        })();
-        angular.module('app.services').factory('AuthInterceptor', function ($window) { return new AuthInterceptor($window); });
+        })(HttpInterceptor);
+        angular.module('app.services').service('AuthInterceptor', AuthInterceptor);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 var app;

@@ -6,6 +6,7 @@
         "noImplicitAny": true,
         "sourceMap": true,
         "noImplicitReturns": true,
+        "suppressImplicitAnyIndexErrors": true,
         "noFallthroughCasesInSwitch": true,
         "allowUnreachableCode": false,
         "outFile": "./public/js/app.js"
